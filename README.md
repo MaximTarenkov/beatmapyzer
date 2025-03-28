@@ -1,47 +1,48 @@
 # beatmapyzer
+###### [Russian README](README_ru.md)
 
-### Простой инструмент для анализа карт **osu!** на Python.
+### A simple tool for analyzing **osu!** beatmaps in Python.
 
-#### Пока планируется:
-* Расчёт доли бёрст и стримов от общего числа нот
-* Кластеризация карт
-* Выявление частовстречающихся паттернов
+#### TODO:
+*   Calculation of the proportion of bursts and streams relative to the total number of notes
+*   Beatmap clustering
+*   Identification of frequently occurring patterns
 
 ---
-## Использование
+## Usage
 
 ```python
 from beatmapyzer import Beatmapyzer
 
 mapper = Beatmapyzer()
 ```
-### Загрузка карт из файлов
+### Loading maps from files
 
 ```python
- # Загрузка из директории с файлами .osz
-mapper = Beatmapyzer().loader('пример/какого/то/пути', isOsz=True)
+ # Load from a directory containing .osz files
+mapper = Beatmapyzer().loader('example/path/to/files', isOsz=True)
 
-# Аналогично для файлов .osu
-mapper = Beatmapyzer().loader('пример/какого/то/пути')
+# Similarly for .osu files
+mapper = Beatmapyzer().loader('example/path/to/files')
 
-# Если необходимо перезаписать данные
-mapper = Beatmapyzer().loader('пример/какого/то/пути', clear=True)
+# If you need to overwrite existing data
+mapper = Beatmapyzer().loader('example/path/to/files', clear=True)
 ```
 
 
 ###
 
-Если данные `.osu` файла уже загружены в память в виде байтов `bytes` или списка байтов `list[bytes]`:
+If the `.osu` file data is already loaded into memory as `bytes` or a list of bytes `list[bytes]`:
 
 ```python
 mapper = Beatmapyzer().parse(maps, clear=True)
 ```
 
-## Работа с данными
+## Working with Data
 
-Можно обратиться к `beatmaps`, чтобы получить базовую информацию всех карт:
+You can access `beatmaps` to get basic information for all maps:
 
 ```python
-print(new_map.beatmaps[0]['title']) # Выводит название первой карты в списке
+print(new_map.beatmaps[0]['title']) # Prints the title of the first map in the list
 ```
 
